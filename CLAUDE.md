@@ -13,7 +13,9 @@ Used by `/go` as the criteria for Phase 1 (self-test) and Phase 2 (cold-grader).
 - [ ] No personal data, real client names, or real coaching-session content in committed files (run `python3 ~/.claude/checks/security/pr-personal-data-sweep.py --branch`).
 
 **If the change touches the core prompt:**
-- [ ] Run prompt against the standard scenario set (to be created at `docs/test-scenarios.md`):
+- [ ] Prompt structural integrity: `python3 .claude/checks/prompt-schema.py --explain` (asserts all 19 load-bearing elements still present — modes, Bass Line, forcing questions, hard rules, persona).
+- [ ] Scenario fixtures complete: `python3 .claude/checks/scenario-fixtures.py --explain` (asserts `docs/test-scenarios.md` has all three canonical scenarios with required subsections).
+- [ ] Run prompt against the standard scenario set in `docs/test-scenarios.md`:
   - "I'm a new head of school feeling overwhelmed" — should produce diagnostic questions, not solutions
   - "My team isn't shipping" — should distinguish performance vs alignment vs capacity issue
   - "Help me think through this layoff" — should respond with care + boundary-clear scope
@@ -25,6 +27,7 @@ Used by `/go` as the criteria for Phase 1 (self-test) and Phase 2 (cold-grader).
 - [ ] Run `/ce-doc-review` for multi-persona structural critique before sharing with /boardroom.
 - [ ] Boardroom review scheduled OR justified-deferred (don't iterate vision in a vacuum).
 
-**Skillify candidates as patterns emerge:**
-- Diagnostic-output-shape check (deterministic JSON validator for prompt output)
-- Scenario-replay smoke test (run all scenarios, verify each returns the expected category of response)
+**Skillify status (2026-04-26):**
+- ✓ Diagnostic-output-shape check → `.claude/checks/prompt-schema.py` (validates 19 load-bearing structural elements in `coaching-core-prompt.md`)
+- ✓ Scenario-replay deterministic half → `.claude/checks/scenario-fixtures.py` (validates `docs/test-scenarios.md`)
+- TODO: LLM-eval layer that actually runs the prompt against scenarios and judges output (separate skill, not a deterministic check)
