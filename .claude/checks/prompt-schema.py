@@ -3,10 +3,10 @@
 Coaching-skill prompt-schema check.
 
 What it asserts:
-  coaching-core-prompt.md still contains all the structural elements that
-  define a valid MC Leadership Diagnostic prompt. If any element is removed
-  by an edit, this check fails — preventing accidental drift in the prompt's
-  load-bearing structure.
+  skills/8-coaching-diagnostic/SKILL.md still contains all the structural
+  elements that define a valid MC Leadership Diagnostic prompt. If any
+  element is removed by an edit, this check fails — preventing accidental
+  drift in the prompt's load-bearing structure.
 
 Required elements (per CLAUDE.md Verification section):
   1. Three modes: Reactive, Proactive, Team Diagnostic
@@ -39,7 +39,7 @@ import re
 import sys
 from pathlib import Path
 
-PROMPT_PATH = Path(__file__).resolve().parents[2] / "coaching-core-prompt.md"
+PROMPT_PATH = Path(__file__).resolve().parents[2] / "skills" / "8-coaching-diagnostic" / "SKILL.md"
 
 # Required substring patterns. Each is a (label, regex) pair.
 # Regexes are case-insensitive and tolerate small wording variations,
