@@ -1,0 +1,48 @@
+name: Conductor Checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  prompt-integrity:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile check scripts
+        run: |
+          python3 -m py_compile \
+            .claude/checks/bundle-integrity.py \
+            .claude/checks/bundle-integrity_test.py \
+            .claude/checks/prompt-schema.py \
+            .claude/checks/prompt-schema_test.py \
+            .claude/checks/scenario-fixtures.py \
+            .claude/checks/scenario-fixtures_test.py
+
+      - name: Bundle integrity
+        run: python3 .claude/checks/bundle-integrity.py --explain
+
+      - name: Bundle integrity tests
+        run: python3 .claude/checks/bundle-integrity_test.py
+
+      - name: Coaching prompt schema
+        run: python3 .claude/checks/prompt-schema.py --explain
+
+      - name: Coaching prompt schema tests
+        run: python3 .claude/checks/prompt-schema_test.py
+
+      - name: Coaching scenario fixtures
+        run: python3 .claude/checks/scenario-fixtures.py --explain
+
+      - name: Coaching scenario fixture tests
+        run: python3 .claude/checks/scenario-fixtures_test.py

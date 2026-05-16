@@ -10,6 +10,12 @@ adapted_from: Dave Kline (https://x.com/dklineii) — original 1:1 framework. MC
 
 Part of the **MC Conductor** bundle. The 1:1 is the one meeting most leaders run wrong — and the one where MC's diagnostic discipline most directly translates into how you manage. This skill flips the 1:1 from manager-led status update to direct-report-owned coaching session. It's adapted from Dave Kline's framework with the MehtaCognition methodology layered in: reframing over prescription, the question as the intervention, the structural pattern under the people problem.
 
+## Conductor Profile
+
+If a Conductor Profile is available, use it to adapt this skill to the leader's role, organization, stakeholders, strategic arc, source map, communication duties, directness preference, and off-limits areas.
+
+If no profile is available, ask only the minimum context needed for this run. Do not force the full onboarding interview unless the user is intentionally setting up Conductor. See `docs/onboarding.md` for the shared setup flow.
+
 ## The core move
 
 Most managers run their 1:1s like status updates. They write the agenda. They ask the questions. They take 80% of the airtime. The person sitting across shows up reactive, defensive, holding back the things that actually matter.

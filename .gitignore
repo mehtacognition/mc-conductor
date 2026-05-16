@@ -27,3 +27,4 @@ node_modules/
 
 # Local-only docs
 HANDOVER.md
+local/

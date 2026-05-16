@@ -20,7 +20,7 @@ When customizing skills for your own organization, keep this voice. Generic AI a
 - **The publisher:** *MehtaCognition* (one word, no space)
 - **The repo:** `mc-conductor`
 - **Each skill:** functional name (e.g., *Morning Brief*, *Weekly 1:1*, *Coaching Diagnostic*) — not themed-cute names. Clarity at the install moment beats branding cleverness.
-- **The relationship to NAVI:** Conductor is a *portable subset* of the NAVI system MehtaCognition uses internally. Don't conflate the two — Conductor runs anywhere; NAVI is a private install with deep data integration.
+- **The relationship to deeper installs:** Conductor is the portable prompt bundle. It can later grow into a private MehtaCognition setup with deeper data integration, but the public bundle runs anywhere.
 
 ## Visual
 
@@ -31,7 +31,7 @@ When customizing skills for your own organization, keep this voice. Generic AI a
 - **Backgrounds:** Dark `#1A1A2E`, Light `#F8F9FA`. Teal on dark = signature.
 - **Vibe:** Professional, modern, clean. Restraint over flash.
 
-For the canonical visual spec: see the *MehtaCognition Brand Guide.pdf* in `~/Documents/MehtaCognition/2-Business/Brand/` (or contact MehtaCognition for the public version).
+For public customization, use this file as the canonical lightweight visual reference. Internal MehtaCognition brand assets are not required to use Conductor.
 
 ## Quality benchmark
 
