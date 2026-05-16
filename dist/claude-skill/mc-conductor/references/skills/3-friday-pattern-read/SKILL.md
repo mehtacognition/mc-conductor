@@ -2,7 +2,7 @@
 name: mc-friday-pattern-read
 description: Use at the end of the week when a C-suite leader wants to see what the week revealed across meetings, decisions, daily briefs, commitments, energy, and open loops. Trigger phrases - "Friday Pattern Read", "weekly pattern read", "what did this week reveal", "week in review", "read the week".
 bundle: mc-conductor
-position: 3 of 11
+position: 3 of 12
 ---
 
 # Conductor - Friday Pattern Read

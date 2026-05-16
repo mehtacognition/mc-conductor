@@ -1,11 +1,11 @@
 ---
 name: mc-conductor
-description: Use for MehtaCognition Conductor leadership rituals: Morning Brief, Evening Hot Take, Friday Pattern Read, Sunday Reflection, Monthly Review, Quarterly Positioning, Exec Review, Coaching Diagnostic, Weekly 1:1, Leader-Pen, and Leader-Edit. Helps leaders run a shared Conductor Profile across cadence, diagnosis, document review, writing, and revision.
+description: Use for MehtaCognition Conductor leadership rituals: Morning Brief, Evening Hot Take, Friday Pattern Read, Sunday Reflection, Monthly Review, Quarterly Positioning, Coaching Diagnostic, Personal Board of Advisors, Weekly 1:1, Exec Review, Leader-Pen, and Leader-Edit. Helps leaders run a shared Conductor Profile across cadence, diagnosis, document review, decision support, writing, and revision.
 ---
 
 # MC Conductor
 
-Conductor is a bundle of AI-powered rituals for leaders who want to think more clearly, lead more deliberately, and keep a reusable profile across reflection, diagnosis, review, writing, and editing.
+Conductor is a bundle of AI-powered rituals for leaders who want to think more clearly, lead more deliberately, and keep a reusable profile across reflection, diagnosis, review, decision support, writing, and editing.
 
 ## How To Use This Skill
 
@@ -19,11 +19,12 @@ When the user asks for a Conductor workflow, load the matching reference file an
 | Sunday Reflection, weekly reflection, set up next week | `references/skills/4-sunday-reflection/SKILL.md` |
 | Monthly Review, month in review, 30-day read | `references/skills/5-monthly-review/SKILL.md` |
 | Quarterly Positioning, quarterly review, 90-day view | `references/skills/6-quarterly-positioning/SKILL.md` |
-| Exec Review, build my review-like-me skill, document review through my lens | `references/skills/7-exec-review/SKILL.md` |
-| Coaching Diagnostic, leadership diagnostic, Step Before Strategy | `references/skills/8-coaching-diagnostic/SKILL.md` |
+| Coaching Diagnostic, leadership diagnostic, Step Before Strategy | `references/skills/7-coaching-diagnostic/SKILL.md` |
+| Personal Board of Advisors, convene the board, run this by my advisors, challenge voices, advisor lens | `references/skills/8-personal-board-of-advisors/SKILL.md` |
 | Weekly 1:1, prep my 1:1, direct-report dashboard | `references/skills/9-one-on-one/SKILL.md` |
-| Leader-Pen, write this in my voice, draft a memo | `references/skills/10-leader-pen/SKILL.md` |
-| Leader-Edit, edit this, sharpen this draft, does this sound like me | `references/skills/11-leader-edit/SKILL.md` |
+| Exec Review, build my review-like-me skill, document review through my lens | `references/skills/10-exec-review/SKILL.md` |
+| Leader-Pen, write this in my voice, draft a memo | `references/skills/11-leader-pen/SKILL.md` |
+| Leader-Edit, edit this, sharpen this draft, does this sound like me | `references/skills/12-leader-edit/SKILL.md` |
 
 If the user is setting up Conductor for the first time, load `references/docs/onboarding.md` and guide them through the smallest useful setup. If they ask how to install or update Conductor, use `references/INSTALL.md` or `references/UPDATE.md`.
 

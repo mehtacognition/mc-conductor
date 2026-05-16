@@ -2,7 +2,7 @@
 name: mc-monthly-review
 description: Use monthly when a C-suite leader wants the 30-day view: what is real now, which weekly patterns consolidated, where priorities drifted, how energy and relationships changed, and what truth the month makes harder to avoid. Trigger phrases - "Monthly Review", "month in review", "what is real right now", "30-day review", "review this month".
 bundle: mc-conductor
-position: 5 of 11
+position: 5 of 12
 ---
 
 # Conductor - Monthly Review

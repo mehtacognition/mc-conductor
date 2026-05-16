@@ -13,7 +13,7 @@ If your Claude account supports custom Skills, use the bundled package:
 5. Enable the skill if Claude asks.
 6. Start a new chat and say: `Run Sunday Reflection for this week.`
 
-This installs one native Claude Skill called **mc-conductor**. It contains all eleven Conductor rituals and loads the relevant one when you ask for Morning Brief, Sunday Reflection, Leader-Pen, Exec Review, Coaching Diagnostic, or another Conductor workflow.
+This installs one native Claude Skill called **mc-conductor**. It contains all twelve Conductor workflows and loads the relevant one when you ask for Morning Brief, Sunday Reflection, Leader-Pen, Exec Review, Coaching Diagnostic, or another Conductor workflow.
 
 ## First-Time Setup
 
@@ -46,7 +46,7 @@ Do not install everything into separate projects on day one. Start with one of t
 - **Leader-Pen** if your first need is writing in your own voice.
 - **Coaching Diagnostic** if something specific feels stuck.
 
-The native Claude Skill package includes all eleven workflows, but you should still start with one ritual.
+The native Claude Skill package includes all twelve workflows, but you should still start with one ritual.
 
 ## Privacy Before Pasting Sources
 

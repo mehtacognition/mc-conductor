@@ -2,7 +2,7 @@
 name: mc-coaching-diagnostic
 description: Use when a leader needs a structured diagnostic conversation that surfaces the structural patterns underneath what they describe as a strategy, people, or budget problem. Three modes — Reactive (crisis), Proactive (planning), Team Diagnostic (leadership team, each member answers independently). Output is a Leadership Diagnostic Brief that anchors the rest of the Conductor rhythm. Trigger phrases — "I need to think through X", "I'm stuck on Y", "run me through the diagnostic", "MC coaching session", "leadership diagnostic", "I want to do a Step Before Strategy with my team".
 bundle: mc-conductor
-position: 8 of 11
+position: 7 of 12
 ---
 
 # Conductor — Coaching Diagnostic

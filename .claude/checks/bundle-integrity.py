@@ -2,7 +2,7 @@
 """
 Conductor bundle-integrity check.
 
-Asserts that the portable bundle has all 11 skill files, each skill has the
+Asserts that the portable bundle has all 12 skill files, each skill has the
 required installable YAML frontmatter, positions are complete and unique, and
 portable skills do not leak private runtime dependencies, and required public
 documentation stays wired into the install path.
@@ -58,11 +58,12 @@ EXPECTED_SKILLS = {
     4: ("4-sunday-reflection", "Sunday Reflection"),
     5: ("5-monthly-review", "Monthly Review"),
     6: ("6-quarterly-positioning", "Quarterly Positioning"),
-    7: ("7-exec-review", "Exec Review"),
-    8: ("8-coaching-diagnostic", "Coaching Diagnostic"),
+    7: ("7-coaching-diagnostic", "Coaching Diagnostic"),
+    8: ("8-personal-board-of-advisors", "Personal Board of Advisors"),
     9: ("9-one-on-one", "Weekly 1:1"),
-    10: ("10-leader-pen", "Leader-Pen"),
-    11: ("11-leader-edit", "Leader-Edit"),
+    10: ("10-exec-review", "Exec Review"),
+    11: ("11-leader-pen", "Leader-Pen"),
+    12: ("12-leader-edit", "Leader-Edit"),
 }
 
 REQUIRED_FRONTMATTER = ("name", "description", "bundle", "position")
@@ -274,7 +275,7 @@ def run_check(project_root: Path) -> tuple[bool, list[str]]:
         if fm.get("bundle") != "mc-conductor":
             failures.append(f"bundle must be mc-conductor: skills/{folder}/SKILL.md")
 
-        expected_position = f"{position} of 11"
+        expected_position = f"{position} of 12"
         if fm.get("position") != expected_position:
             failures.append(
                 f"position must be '{expected_position}': skills/{folder}/SKILL.md"
@@ -350,7 +351,7 @@ def main() -> int:
 
     if passed:
         if args.explain:
-            print("✓ Conductor bundle has all 11 installable skills and current native Claude Skill package")
+            print("✓ Conductor bundle has all 12 installable skills and current native Claude Skill package")
         return 0
 
     print(f"✗ Bundle integrity failed ({len(failures)} issue(s)):", file=sys.stderr)

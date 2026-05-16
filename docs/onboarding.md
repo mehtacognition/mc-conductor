@@ -18,7 +18,7 @@ The sources the leader can realistically bring into the cadence.
 
 The rituals the leader will actually run, when, and with what input.
 
-Do not install all eleven skills and hope a rhythm appears. Start with the smallest cadence the leader will sustain.
+Do not install all twelve skills and hope a rhythm appears. Start with the smallest cadence the leader will sustain.
 
 ## Setup Interview
 

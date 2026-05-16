@@ -3,7 +3,7 @@
 Tests for prompt-schema check.
 
 Asserts:
-  - Live skills/8-coaching-diagnostic/SKILL.md → exit 0 (passes all required elements)
+  - Live skills/7-coaching-diagnostic/SKILL.md → exit 0 (passes all required elements)
   - A synthetic prompt missing one element → exit 1 (and the missing element is named)
   - --json output reports passed=false on failure
 """
@@ -15,7 +15,7 @@ import tempfile
 from pathlib import Path
 
 CHECK = Path(__file__).parent / "prompt-schema.py"
-LIVE_PROMPT = Path(__file__).resolve().parents[2] / "skills" / "8-coaching-diagnostic" / "SKILL.md"
+LIVE_PROMPT = Path(__file__).resolve().parents[2] / "skills" / "7-coaching-diagnostic" / "SKILL.md"
 
 
 def run(prompt_path: Path, *extra: str) -> tuple[int, str, str]:
@@ -35,7 +35,7 @@ def main() -> None:
         print(f"FAIL [live prompt → pass]: exit {code}", file=sys.stderr)
         print(err, file=sys.stderr)
         sys.exit(1)
-    print("  ✓ live skills/8-coaching-diagnostic/SKILL.md passes")
+    print("  ✓ live skills/7-coaching-diagnostic/SKILL.md passes")
 
     # 2. Synthetic minimal prompt → should fail
     with tempfile.TemporaryDirectory() as tmp:

@@ -2,7 +2,7 @@
 name: mc-one-on-one
 description: Use weekly when meeting with a direct report. Reads the dashboard they fill in beforehand, surfaces patterns from your last 3-4 weeks of notes with this person, and produces a listening guide rather than a script. Trigger phrases — "prep my 1:1 with X", "review the dashboard for tomorrow's 1:1", "what should I listen for in 1:1 with [name]", "1:1 prep", "weekly 1:1 with [name]".
 bundle: mc-conductor
-position: 9 of 11
+position: 9 of 12
 adapted_from: Dave Kline (https://x.com/dklineii) — original 1:1 framework. MC layer (Subtraction Test as weekly question, push-back patterns from MC Coaching Diagnostic, Conductor rhythm integration) developed by MehtaCognition.
 ---
 

@@ -1,6 +1,6 @@
 # Conductor — MC Leadership OS Bundle
 
-A bundle of 11 single-file portable AI skills for leaders. Portable leadership-rhythm bundle that can grow into a fuller MehtaCognition setup engagement. Repo: `mehtacognition/mc-conductor`.
+A bundle of 12 single-file portable AI skills for leaders. Portable leadership-rhythm bundle that can grow into a fuller MehtaCognition setup engagement. Repo: `mehtacognition/mc-conductor`.
 
 This is a **prompt-only project** — no code build. Verification tests prompt structural integrity, not code correctness.
 
@@ -15,18 +15,19 @@ mc-conductor/
 ├── CONTRIBUTING.md                    # Contribution and anonymization guidance
 ├── CHANGELOG.md                       # Release notes and update guidance
 ├── CLAUDE.md                          # This file (verification + project rules)
-├── skills/                            # 11 single-file portable skills
+├── skills/                            # 12 single-file portable skills
 │   ├── 1-morning-brief/SKILL.md       # cadence — daily AM
 │   ├── 2-evening-hot-take/SKILL.md    # cadence — daily PM
 │   ├── 3-friday-pattern-read/SKILL.md # cadence — weekly
 │   ├── 4-sunday-reflection/SKILL.md   # cadence — weekly
 │   ├── 5-monthly-review/SKILL.md      # cadence — monthly
 │   ├── 6-quarterly-positioning/SKILL.md # cadence — quarterly
-│   ├── 7-exec-review/SKILL.md         # personalization — generates leader's review skill
-│   ├── 8-coaching-diagnostic/SKILL.md # personalization — MC diagnostic
-│   ├── 9-one-on-one/SKILL.md          # personalization — Klein-adapted weekly 1:1
-│   ├── 10-leader-pen/SKILL.md         # voice — write in leader's voice
-│   └── 11-leader-edit/SKILL.md        # voice — edit in leader's voice
+│   ├── 7-coaching-diagnostic/SKILL.md # diagnose/decide — MC diagnostic
+│   ├── 8-personal-board-of-advisors/SKILL.md # diagnose/decide — advisor board
+│   ├── 9-one-on-one/SKILL.md          # extend judgment — Klein-adapted weekly 1:1
+│   ├── 10-exec-review/SKILL.md        # extend judgment — generates leader's review skill
+│   ├── 11-leader-pen/SKILL.md         # voice — write in leader's voice
+│   └── 12-leader-edit/SKILL.md        # voice — edit in leader's voice
 ├── docs/
 │   ├── onboarding.md                  # Conductor Profile setup interview + template
 │   ├── sample-conductor-profile.md    # Anonymized sample profile
@@ -48,24 +49,25 @@ mc-conductor/
 **Phase A complete (2026-04-29):**
 - Repo renamed from `mc-coaching-skill` to `mc-conductor`
 - Restructured to bundle layout (11 skills/ folders)
-- Skills #7 (Exec Review), #8 (Coaching Diagnostic), #9 (Weekly 1:1) ported
+- Exec Review, Coaching Diagnostic, and Weekly 1:1 ported
 - README + brand.md written
 - Skillify checks updated to point at new SKILL.md paths
 
 **Phase B complete (2026-05-15):**
 - Skills #1-6 (cadence skills) added as portable "bring your own sources" skills for C-suite and institutional leaders
-- Skills #10-11 (Leader-Pen, Leader-Edit) added as portable voice skills with voice elicitation, drafting, and editing discipline
-- Bundle-integrity check added to verify all 11 skills, YAML frontmatter, README coverage, unique positions, native Claude Skill package, and absence of private runtime dependencies
+- Leader-Pen and Leader-Edit added as portable voice skills with voice elicitation, drafting, and editing discipline
+- Bundle-integrity check added to verify the full skill set, YAML frontmatter, README coverage, unique positions, native Claude Skill package, and absence of private runtime dependencies
 
 **Phase C complete (2026-05-15):**
 - Added anonymized examples for cadence skills
 - Added shared onboarding flow with Conductor Profile, Source Map, and Cadence Contract
-- Made all 11 skills profile-aware without adding a 12th skill
+- Made the first 11 skills profile-aware before adding the advisory-board decision-support skill
 - Added Quickstart, Skill Index, and Customization docs for cold external users and future repo updates
 - Added contributing guidance, changelog, GitHub Actions checks, and anonymized sample Conductor Profile
 
-**Phase D (next):**
-- Add a cross-skill consistency pass for handoff language between daily, weekly, monthly, and quarterly rituals
+**Phase D in progress (2026-05-16):**
+- Reordered the 12 skills into a public-facing arc: cadence, diagnose/decide, extend judgment, voice.
+- Next: add a cross-skill consistency pass for handoff language between daily, weekly, monthly, quarterly, and decision-support rituals
 
 ## Verification
 
@@ -74,12 +76,12 @@ Used by `/go` as the criteria for Phase 1 (self-test) and Phase 2 (cold-grader).
 **Always:**
 - [ ] All `skills/*/SKILL.md` files parse as valid Markdown with valid YAML frontmatter (`name:`, `description:`, `bundle: mc-conductor`).
 - [ ] Native package current: `python3 scripts/build-claude-skill-package.py --check`.
-- [ ] Bundle integrity: `python3 .claude/checks/bundle-integrity.py --explain` (asserts all 11 skill files exist, positions are unique, README lists every skill, required public docs exist, each skill includes the Conductor Profile rule, native Claude Skill package is present, and portable skills do not leak private runtime dependencies).
+- [ ] Bundle integrity: `python3 .claude/checks/bundle-integrity.py --explain` (asserts all 12 skill files exist, positions are unique, README lists every skill, required public docs exist, each skill includes the Conductor Profile rule, native Claude Skill package is present, and portable skills do not leak private runtime dependencies).
 - [ ] No personal data, real client names, or real coaching-session content in committed files (run `python3 ~/.claude/checks/security/pr-personal-data-sweep.py --branch`).
-- [ ] `README.md` install instructions list all 11 skills accurately (no orphans, no phantoms) and link `INSTALL.md`, `QUICKSTART.md`, `UPDATE.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `docs/onboarding.md`, `docs/sample-conductor-profile.md`, `docs/skill-index.md`, and `docs/customization.md` as public entrypoints.
+- [ ] `README.md` install instructions list all 12 skills accurately (no orphans, no phantoms) and link `INSTALL.md`, `QUICKSTART.md`, `UPDATE.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `docs/onboarding.md`, `docs/sample-conductor-profile.md`, `docs/skill-index.md`, and `docs/customization.md` as public entrypoints.
 
-**If the change touches the Coaching Diagnostic (skill 8):**
-- [ ] Prompt structural integrity: `python3 .claude/checks/prompt-schema.py --explain` (asserts all 19 load-bearing elements still present in `skills/8-coaching-diagnostic/SKILL.md` — modes, Bass Line, forcing questions, hard rules, persona).
+**If the change touches the Coaching Diagnostic (skill 7):**
+- [ ] Prompt structural integrity: `python3 .claude/checks/prompt-schema.py --explain` (asserts all 19 load-bearing elements still present in `skills/7-coaching-diagnostic/SKILL.md` — modes, Bass Line, forcing questions, hard rules, persona).
 - [ ] Scenario fixtures complete: `python3 .claude/checks/scenario-fixtures.py --explain` (asserts `docs/test-scenarios.md` has all three canonical scenarios with required subsections).
 - [ ] Run prompt against the standard scenario set in `docs/test-scenarios.md`:
   - "I'm a new head of school feeling overwhelmed" — should produce diagnostic questions, not solutions
@@ -93,7 +95,7 @@ Used by `/go` as the criteria for Phase 1 (self-test) and Phase 2 (cold-grader).
 - [ ] MC layer present: Subtraction Test as Q8, push-back patterns from MC Coaching Diagnostic, Conductor rhythm integration in closing.
 - [ ] Attribution to Dave Kline (original framework) preserved in YAML `adapted_from` and closing footer.
 
-**If the change touches the Exec Review meta-skill (skill 7):**
+**If the change touches the Exec Review meta-skill (skill 10):**
 - [ ] Meta-prompt below the scissors line is unchanged in structure — leaders should always be able to copy-paste it into any AI tool and get a complete personalized skill back.
 - [ ] Six required subsections in the generated skill (Core Principles, Feedback Patterns, Decision-Making Framework, Communication Style, Document Review Checklists, Example Review Comments) all named in the meta-prompt.
 
@@ -113,11 +115,11 @@ Used by `/go` as the criteria for Phase 1 (self-test) and Phase 2 (cold-grader).
 - [ ] Run `/ce-doc-review` if the change is more than minor copy editing — README is the front door for the bundle.
 
 **Skillify status (2026-04-26, paths updated 2026-04-29, bundle check added 2026-05-15):**
-- ✓ Diagnostic-output-shape check → `.claude/checks/prompt-schema.py` (now reads `skills/8-coaching-diagnostic/SKILL.md`)
+- ✓ Diagnostic-output-shape check → `.claude/checks/prompt-schema.py` (now reads `skills/7-coaching-diagnostic/SKILL.md`)
 - ✓ Scenario-replay deterministic half → `.claude/checks/scenario-fixtures.py` (reads `docs/test-scenarios.md`)
 - ✓ Bundle-integrity check → `.claude/checks/bundle-integrity.py` (reads skills, public docs, workflow files, and install entrypoints)
 - TODO: LLM-eval layer that actually runs the prompt against scenarios and judges output (separate skill, not a deterministic check)
-- TODO: Cross-skill consistency check — validate handoff language and referenced skill names across all 11 files.
+- TODO: Cross-skill consistency check — validate handoff language and referenced skill names across all 12 files.
 
 ## Public-repo discipline
 

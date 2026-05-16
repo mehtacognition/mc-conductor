@@ -2,7 +2,7 @@
 name: mc-leader-edit
 description: Use when a leader has a draft that needs sharpening for voice, clarity, structure, credibility, audience fit, consultant-speak, AI tells, jargon, and unsupported claims. Trigger phrases - "edit this", "sharpen this draft", "does this sound like me", "leader edit", "clean up this memo", "make this stronger".
 bundle: mc-conductor
-position: 11 of 11
+position: 12 of 12
 ---
 
 # Conductor - Leader-Edit

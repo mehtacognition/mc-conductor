@@ -7,7 +7,7 @@ Use this when you want to download Conductor and run the first useful ritual wit
 1. Download `dist/mc-conductor-claude-skill.zip` from the repo or latest release if your Claude account supports custom Skills.
 2. Upload it in Claude under **Settings -> Skills -> Upload skill**.
 3. Create a Conductor Profile from the template in `docs/onboarding.md`; use `docs/sample-conductor-profile.md` as a model for specificity.
-4. Run one starter ritual, not all eleven.
+4. Run one starter ritual, not all twelve.
 5. Save the output where you will actually see it again.
 
 The recommended first install is **Sunday Reflection**. If the leader needs daily orientation right away, start with **Morning Brief** instead.
@@ -35,7 +35,7 @@ If custom Skills are available in your Claude account, install the one-package Z
 3. Upload the ZIP.
 4. Start a new chat and ask for the ritual you want.
 
-The package contains all eleven Conductor workflows. Claude loads the matching workflow when your request calls for it.
+The package contains all twelve Conductor workflows. Claude loads the matching workflow when your request calls for it.
 
 ## Claude Project Setup
 

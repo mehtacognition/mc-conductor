@@ -25,11 +25,12 @@ SKILL_FILES = (
     Path("skills/4-sunday-reflection/SKILL.md"),
     Path("skills/5-monthly-review/SKILL.md"),
     Path("skills/6-quarterly-positioning/SKILL.md"),
-    Path("skills/7-exec-review/SKILL.md"),
-    Path("skills/8-coaching-diagnostic/SKILL.md"),
+    Path("skills/7-coaching-diagnostic/SKILL.md"),
+    Path("skills/8-personal-board-of-advisors/SKILL.md"),
     Path("skills/9-one-on-one/SKILL.md"),
-    Path("skills/10-leader-pen/SKILL.md"),
-    Path("skills/11-leader-edit/SKILL.md"),
+    Path("skills/10-exec-review/SKILL.md"),
+    Path("skills/11-leader-pen/SKILL.md"),
+    Path("skills/12-leader-edit/SKILL.md"),
 )
 
 REFERENCE_FILES = (

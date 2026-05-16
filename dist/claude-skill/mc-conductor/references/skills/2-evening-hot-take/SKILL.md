@@ -2,7 +2,7 @@
 name: mc-evening-hot-take
 description: Use at the end of a workday when a C-suite leader wants a concise, candid read on what the day revealed: the key insight, open question, small win, pattern connection, and possible strategic-framing candidates. Trigger phrases - "evening hot take", "close out today", "what did today reveal", "daily reflection", "end of day read".
 bundle: mc-conductor
-position: 2 of 11
+position: 2 of 12
 ---
 
 # Conductor - Evening Hot Take

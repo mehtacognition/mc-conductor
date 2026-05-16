@@ -2,7 +2,7 @@
 name: mc-morning-brief
 description: Use at the start of a workday when a C-suite leader wants executive orientation: what today requires, which meetings matter, what must not get lost, and how today's calendar connects to the current strategic arc. Trigger phrases - "morning brief", "prep me for today", "what does today require", "daily executive brief", "what should I not lose today".
 bundle: mc-conductor
-position: 1 of 11
+position: 1 of 12
 ---
 
 # Conductor - Morning Brief

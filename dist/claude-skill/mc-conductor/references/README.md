@@ -20,7 +20,9 @@ Use [`QUICKSTART.md`](QUICKSTART.md) for the first install, then [`docs/onboardi
 
 ## What's in the bundle
 
-Eleven skills, available two ways: a one-package native Claude Skill at `dist/mc-conductor-claude-skill.zip`, or single-file portable prompts you can paste into a Claude Project, ChatGPT GPT, Gemini, or any AI conversation.
+Twelve skills, available two ways: a one-package native Claude Skill at `dist/mc-conductor-claude-skill.zip`, or single-file portable prompts you can paste into a Claude Project, ChatGPT GPT, Gemini, or any AI conversation.
+
+The numbering is intentional: **1-6 create the leadership rhythm, 7-8 help the leader diagnose and decide, 9-10 extend that judgment into team and document workflows, and 11-12 turn the resulting clarity into voice.**
 
 ### Cadence — rituals that run on your week
 
@@ -33,20 +35,26 @@ Eleven skills, available two ways: a one-package native Claude Skill at `dist/mc
 | **5. Monthly Review** | Monthly | Names what is real across 30 days: repeated patterns, drift, energy, relationships, and the honest read. |
 | **6. Quarterly Positioning** | Quarterly | Uses the 90-day view to ask what the leader should set up, protect, stop, or question next. |
 
-### Personalization — train AI to think and review like you
+### Diagnose and decide — turn signal into judgment
 
 | Skill | When | What it does |
 |---|---|---|
-| **7. Exec Review (Build Your Own)** | Once at setup, refresh quarterly | Generates a personalized leader-review/profile skill for your admin, chief of staff, or executive team. It helps others manage up by preparing documents through your review lens before they reach you. |
-| **8. Coaching Diagnostic** | When something specific feels stuck | Structured diagnostic conversation. Surfaces the structural pattern under what feels like a strategy, people, or budget problem. Three modes: Reactive (crisis), Proactive (planning), Team Diagnostic (leadership team, each member independent). |
+| **7. Coaching Diagnostic** | When something specific feels stuck | Structured diagnostic conversation. Surfaces the structural pattern under what feels like a strategy, people, or budget problem. Three modes: Reactive (crisis), Proactive (planning), Team Diagnostic (leadership team, each member independent). |
+| **8. Personal Board of Advisors** | Strategic decisions, stuck moments, meaning questions | Builds and convenes a reusable advisor board with distinct challenge, builder, simplifier, vocation, and ground-truth lenses. |
+
+### Extend judgment — help the team work through the leader's lens
+
+| Skill | When | What it does |
+|---|---|---|
 | **9. Weekly 1:1** | Weekly per direct report | Flips the 1:1 from manager-owned status update to direct-report-owned coaching session. Adapted from Dave Kline's framework with the MC diagnostic discipline layered in. |
+| **10. Exec Review (Build Your Own)** | Once at setup, refresh quarterly | Generates a personalized leader-review/profile skill for your admin, chief of staff, or executive team. It helps others manage up by preparing documents through your review lens before they reach you. |
 
 ### Voice — write and edit in your own voice, not in AI voice
 
 | Skill | When | What it does |
 |---|---|---|
-| **10. Leader-Pen** | Whenever you're writing | Captures your voice through a structured interview, then drafts emails, board notes, community messages, speeches, op-eds, investor notes, and team messages in *your* voice. |
-| **11. Leader-Edit** | Whenever you're editing a draft | Sharpens any draft against your captured voice. Catches AI-tells, consultant-speak, jargon, structural weakness, and unsupported claims. |
+| **11. Leader-Pen** | Whenever you're writing | Captures your voice through a structured interview, then drafts emails, board notes, community messages, speeches, op-eds, investor notes, and team messages in *your* voice. |
+| **12. Leader-Edit** | Whenever you're editing a draft | Sharpens any draft against your captured voice. Catches AI-tells, consultant-speak, jargon, structural weakness, and unsupported claims. |
 
 ## Docs for operators
 
@@ -87,14 +95,15 @@ Paste the `SKILL.md` content at the start of a new conversation.
 
 ## How to start
 
-Don't install all eleven on day one. The point isn't volume — it's rhythm. We recommend:
+Don't install all twelve on day one. The point isn't volume — it's rhythm. We recommend:
 
 1. **Week 1-2 — Sunday Reflection.** Get a feel for how a structured AI ritual lands on your week.
 2. **Week 3 — add Morning Brief.** Now you have an opening and a closing rhythm.
 3. **Week 4-6 — add Coaching Diagnostic** when something specific feels stuck. The brief it produces becomes the anchor for everything that follows.
-4. **Week 7 — add Weekly 1:1** for one direct report. See if you can run it for a month before adding a second.
-5. **Week 8 — add Exec Review** when your team asks how to ship docs that do not come back marked up. Treat it as profile deepening, not another cadence.
-6. The rest fall in as they're useful.
+4. **Add Personal Board of Advisors** when a recurring decision needs outside lenses, challenge voices, or a clearer way to preserve disagreement.
+5. **Add Weekly 1:1** for one direct report when the diagnostic pattern needs to show up in management practice.
+6. **Add Exec Review** when your team asks how to ship docs that do not come back marked up. Treat it as profile deepening, not another cadence.
+7. **Add Leader-Pen and Leader-Edit** when the cadence starts surfacing ideas that need to become board notes, staff messages, essays, or community updates.
 
 ## What this is *not*
 
@@ -102,7 +111,7 @@ Conductor isn't an app. It isn't a SaaS. It isn't a platform. It's a set of prom
 
 ## What this leads to
 
-Conductor is the portable subset of the second-brain and leadership-rhythm work we run inside MehtaCognition. The cadence skills, diagnostic, 1:1 framework, and voice tools are the parts most directly transferable as prompts. For institutions that want deeper search across reading, meetings, calendar, and reflections, Conductor can grow into a fuller setup engagement.
+Conductor is the portable subset of the second-brain and leadership-rhythm work we run inside MehtaCognition. The cadence skills, diagnostic, 1:1 framework, voice tools, and advisor-board decision ritual are the parts most directly transferable as prompts. For institutions that want deeper search across reading, meetings, calendar, and reflections, Conductor can grow into a fuller setup engagement.
 
 If Conductor's free rhythm is working and you want help installing, customizing, or extending it for an institution, get in touch.
 
@@ -121,7 +130,7 @@ python3 .claude/checks/prompt-schema.py --explain
 python3 .claude/checks/scenario-fixtures.py --explain
 ```
 
-The bundle-integrity check verifies all 11 installable skills exist, have required YAML frontmatter, use `bundle: mc-conductor`, keep unique positions, are listed in the README, include the shared Conductor Profile rule, ship the required public docs, ship a current native Claude Skill package, include the GitHub Actions workflow, and do not leak private runtime dependencies.
+The bundle-integrity check verifies all 12 installable skills exist, have required YAML frontmatter, use `bundle: mc-conductor`, keep unique positions, are listed in the README, include the shared Conductor Profile rule, ship the required public docs, ship a current native Claude Skill package, include the GitHub Actions workflow, and do not leak private runtime dependencies.
 
 ## Updating over time
 

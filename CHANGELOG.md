@@ -6,7 +6,13 @@ The repo can change after a leader installs the skills into Claude, ChatGPT, Gem
 
 ## Unreleased
 
-No released changes yet.
+### Added
+
+- Added Personal Board of Advisors as skill 8, a decision-support workflow for building and convening a reusable Advisor Board Profile.
+
+### Changed
+
+- Reordered the bundle around the public arc: 1-6 cadence, 7-8 diagnose and decide, 9-10 extend judgment, 11-12 voice. Updated docs, routing, and package integrity checks accordingly.
 
 ## 0.1.0 - 2026-05-16
 
@@ -14,7 +20,7 @@ Initial public bundle release candidate for Conductor.
 
 ### Added
 
-- Full 11-skill Conductor bundle: cadence, personalization, and voice skills.
+- Initial 11-skill Conductor bundle: cadence, personalization, and voice skills.
 - Shared Conductor Profile, Source Map, and Cadence Contract onboarding model.
 - Exec Review profile-deepening path with reusable Leader Review Profile.
 - Quickstart, skill index, customization guide, and anonymized sample Conductor Profile.

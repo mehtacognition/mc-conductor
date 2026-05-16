@@ -3,7 +3,7 @@
 Conductor has two kinds of material:
 
 - **Public release files:** the repo docs, public skill files, and packaged Claude Skill ZIP.
-- **Private local context:** your Conductor Profile, Leader Review Profile, Voice Profile, examples, source map, and sensitive notes.
+- **Private local context:** your Conductor Profile, Leader Review Profile, Voice Profile, Advisor Board Profile, examples, source map, and sensitive notes.
 
 Keep those separate. Public updates should never overwrite private leader context.
 

@@ -2,7 +2,7 @@
 name: mc-leader-pen
 description: Use when a leader wants to write in their own voice: board notes, investor updates, team memos, op-eds, speeches, newsletters, LinkedIn posts, emails, or internal essays. Builds from source material and a voice interview instead of generating generic executive prose. Trigger phrases - "write this in my voice", "draft a memo", "leader pen", "help me write", "turn this into a note".
 bundle: mc-conductor
-position: 10 of 11
+position: 11 of 12
 ---
 
 # Conductor - Leader-Pen

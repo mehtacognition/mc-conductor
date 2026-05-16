@@ -2,7 +2,7 @@
 name: build-exec-review-skill
 description: Use when a leader wants their admin team or executive team to review documents through the leader's lens before meetings — surfacing the questions, pushbacks, and decision criteria the leader would apply. Generates a single-file personalized exec-review skill from the leader's behavioral data, working-with-me docs, and feedback patterns. Trigger phrases — "build my exec review skill", "make a review-like-me skill for my team", "generate a doc-review prompt that reviews like I would", "exec review template for my admin".
 bundle: mc-conductor
-position: 7 of 11
+position: 10 of 12
 adapted_from: Pattern from Peter Yang's exec-review skill (Meta VP example), generalized for leader use.
 ---
 

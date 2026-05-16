@@ -2,7 +2,7 @@
 name: mc-sunday-reflection
 description: Use weekly when a C-suite leader wants to turn the week's patterns into meaning, strategic clarity, energy awareness, identity reflection, relationship awareness, and priorities for the week ahead. Trigger phrases - "Sunday Reflection", "weekly reflection", "make meaning of the week", "set up next week", "what should I sit with".
 bundle: mc-conductor
-position: 4 of 11
+position: 4 of 12
 ---
 
 # Conductor - Sunday Reflection

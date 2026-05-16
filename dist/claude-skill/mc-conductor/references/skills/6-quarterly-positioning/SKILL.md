@@ -2,7 +2,7 @@
 name: mc-quarterly-positioning
 description: Use quarterly when a C-suite leader wants the 90-day view: what the last quarter reveals about positioning, coherence, strategic setup, leadership identity, relationship architecture, and the open question for the next quarter. Trigger phrases - "Quarterly Positioning", "quarterly review", "90-day view", "what should I set up", "next quarter positioning".
 bundle: mc-conductor
-position: 6 of 11
+position: 6 of 12
 ---
 
 # Conductor - Quarterly Positioning

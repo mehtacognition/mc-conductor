@@ -57,7 +57,7 @@ python3 .claude/checks/scenario-fixtures.py --explain
 
 Before opening a PR:
 
-- [ ] The change keeps all 11 skills installable as single-file prompts.
+- [ ] The change keeps all 12 skills installable as single-file prompts.
 - [ ] No private leader, client, student, customer, personnel, or board data is included.
 - [ ] README links still point to real files.
 - [ ] The Conductor Profile rule remains in every skill.
