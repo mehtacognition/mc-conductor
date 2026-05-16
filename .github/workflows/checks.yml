@@ -22,12 +22,16 @@ jobs:
       - name: Compile check scripts
         run: |
           python3 -m py_compile \
+            scripts/build-claude-skill-package.py \
             .claude/checks/bundle-integrity.py \
             .claude/checks/bundle-integrity_test.py \
             .claude/checks/prompt-schema.py \
             .claude/checks/prompt-schema_test.py \
             .claude/checks/scenario-fixtures.py \
             .claude/checks/scenario-fixtures_test.py
+
+      - name: Claude Skill package
+        run: python3 scripts/build-claude-skill-package.py --check
 
       - name: Bundle integrity
         run: python3 .claude/checks/bundle-integrity.py --explain

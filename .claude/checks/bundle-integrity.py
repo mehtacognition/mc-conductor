@@ -12,13 +12,16 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import zipfile
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 REQUIRED_DOCS = (
     Path("CONTRIBUTING.md"),
     Path("CHANGELOG.md"),
+    Path("INSTALL.md"),
     Path("QUICKSTART.md"),
+    Path("UPDATE.md"),
     Path("docs/onboarding.md"),
     Path("docs/sample-conductor-profile.md"),
     Path("docs/skill-index.md"),
@@ -30,7 +33,10 @@ REQUIRED_DOCS = (
 REQUIRED_README_LINKS = (
     "CONTRIBUTING.md",
     "CHANGELOG.md",
+    "INSTALL.md",
     "QUICKSTART.md",
+    "UPDATE.md",
+    "dist/mc-conductor-claude-skill.zip",
     "docs/onboarding.md",
     "docs/sample-conductor-profile.md",
     "docs/skill-index.md",
@@ -40,6 +46,10 @@ REQUIRED_README_LINKS = (
 BLOCKED_PUBLIC_FILES = (
     Path("docs/MC-Leadership-OS-Vision-March2026.md"),
 )
+NATIVE_SKILL_SOURCE = Path("packages/claude-skill/mc-conductor/SKILL.md")
+NATIVE_SKILL_FOLDER = Path("dist/claude-skill/mc-conductor")
+NATIVE_SKILL_ZIP = Path("dist/mc-conductor-claude-skill.zip")
+PACKAGE_SCRIPT = Path("scripts/build-claude-skill-package.py")
 
 EXPECTED_SKILLS = {
     1: ("1-morning-brief", "Morning Brief"),
@@ -93,6 +103,10 @@ PUBLIC_SURFACE_FILES = (
     Path("CONTRIBUTING.md"),
     Path("CHANGELOG.md"),
     Path("CLAUDE.md"),
+    Path("INSTALL.md"),
+    Path("UPDATE.md"),
+    NATIVE_SKILL_SOURCE,
+    PACKAGE_SCRIPT,
 )
 PRIVACY_SCAN_ALLOWLIST = {
     Path(".claude/checks/bundle-integrity.py"): set(PRIVATE_RUNTIME_PATTERNS + PRIVATE_EXAMPLE_PATTERNS),
@@ -133,6 +147,8 @@ def collect_privacy_scan_paths(project_root: Path) -> list[Path]:
     for pattern in (
         "skills/*/SKILL.md",
         "docs/*.md",
+        "packages/claude-skill/*/SKILL.md",
+        "scripts/*.py",
         ".github/workflows/*.yml",
         ".github/workflows/*.yaml",
         ".claude/checks/*.py",
@@ -159,6 +175,75 @@ def scan_privacy_leaks(project_root: Path) -> list[str]:
             failures.append(
                 f"private/personal reference(s) in {rel_path}: {', '.join(leaked)}"
             )
+
+    return failures
+
+
+def validate_native_skill_package(project_root: Path) -> list[str]:
+    failures: list[str] = []
+    package_source = project_root / NATIVE_SKILL_SOURCE
+    package_folder = project_root / NATIVE_SKILL_FOLDER
+    package_zip = project_root / NATIVE_SKILL_ZIP
+    package_script = project_root / PACKAGE_SCRIPT
+
+    for rel_path, label in (
+        (NATIVE_SKILL_SOURCE, "native Claude Skill source"),
+        (NATIVE_SKILL_FOLDER / "SKILL.md", "built native Claude Skill folder"),
+        (NATIVE_SKILL_ZIP, "downloadable native Claude Skill ZIP"),
+        (PACKAGE_SCRIPT, "Claude Skill package builder"),
+    ):
+        if not (project_root / rel_path).exists():
+            failures.append(f"missing {label}: {rel_path}")
+
+    if failures:
+        return failures
+
+    source_text = package_source.read_text(errors="ignore")
+    built_text = (package_folder / "SKILL.md").read_text(errors="ignore")
+    if built_text != source_text:
+        failures.append(f"built native Claude Skill source is stale: {NATIVE_SKILL_FOLDER / 'SKILL.md'}")
+
+    fm = parse_frontmatter(source_text)
+    if fm is None:
+        failures.append(f"missing YAML frontmatter: {NATIVE_SKILL_SOURCE}")
+    else:
+        for key in ("name", "description"):
+            if key not in fm or not fm[key]:
+                failures.append(f"missing native skill frontmatter key '{key}': {NATIVE_SKILL_SOURCE}")
+        if fm.get("name") != "mc-conductor":
+            failures.append(f"native skill name must be mc-conductor: {NATIVE_SKILL_SOURCE}")
+
+    required_zip_members = {
+        "mc-conductor/SKILL.md",
+        "mc-conductor/references/README.md",
+        "mc-conductor/references/INSTALL.md",
+        "mc-conductor/references/UPDATE.md",
+        "mc-conductor/references/QUICKSTART.md",
+        "mc-conductor/references/docs/onboarding.md",
+    }
+    for _position, (folder, _display_name) in EXPECTED_SKILLS.items():
+        required_zip_members.add(f"mc-conductor/references/skills/{folder}/SKILL.md")
+
+    try:
+        with zipfile.ZipFile(package_zip) as zf:
+            names = set(zf.namelist())
+            missing_members = sorted(required_zip_members - names)
+            for missing in missing_members:
+                failures.append(f"native Claude Skill ZIP missing: {missing}")
+            if "mc-conductor/SKILL.md" in names:
+                zip_skill_text = zf.read("mc-conductor/SKILL.md").decode("utf-8")
+                if zip_skill_text != source_text:
+                    failures.append(f"downloadable native Claude Skill source is stale: {NATIVE_SKILL_ZIP}")
+            for _position, (folder, _display_name) in EXPECTED_SKILLS.items():
+                member = f"mc-conductor/references/skills/{folder}/SKILL.md"
+                source_skill_path = project_root / "skills" / folder / "SKILL.md"
+                if not source_skill_path.exists():
+                    continue
+                source_skill = source_skill_path.read_text(errors="ignore")
+                if member in names and zf.read(member).decode("utf-8") != source_skill:
+                    failures.append(f"downloadable native Claude Skill has stale skill copy: {member}")
+    except zipfile.BadZipFile:
+        failures.append(f"invalid native Claude Skill ZIP: {NATIVE_SKILL_ZIP}")
 
     return failures
 
@@ -234,6 +319,8 @@ def run_check(project_root: Path) -> tuple[bool, list[str]]:
     if not license_path.exists():
         failures.append("missing LICENSE")
 
+    failures.extend(validate_native_skill_package(project_root))
+
     for blocked_file in BLOCKED_PUBLIC_FILES:
         full_blocked_file = project_root / blocked_file
         if full_blocked_file.exists():
@@ -263,7 +350,7 @@ def main() -> int:
 
     if passed:
         if args.explain:
-            print("✓ Conductor bundle has all 11 installable skills")
+            print("✓ Conductor bundle has all 11 installable skills and current native Claude Skill package")
         return 0
 
     print(f"✗ Bundle integrity failed ({len(failures)} issue(s)):", file=sys.stderr)

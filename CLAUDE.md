@@ -9,7 +9,9 @@ This is a **prompt-only project** — no code build. Verification tests prompt s
 ```
 mc-conductor/
 ├── README.md                          # Conductor narrative + onboarding + install instructions
+├── INSTALL.md                        # Non-technical install path, including native Claude Skill ZIP
 ├── QUICKSTART.md                      # First-hour install and update path
+├── UPDATE.md                          # Updating installed skills without overwriting private context
 ├── CONTRIBUTING.md                    # Contribution and anonymization guidance
 ├── CHANGELOG.md                       # Release notes and update guidance
 ├── CLAUDE.md                          # This file (verification + project rules)
@@ -33,6 +35,9 @@ mc-conductor/
 │   ├── cadence-examples.md            # Anonymized cadence examples
 │   ├── brand.md                       # Conductor brand spec
 │   └── test-scenarios.md              # Coaching Diagnostic scenario fixtures
+├── packages/claude-skill/             # Source for native Claude Skill package
+├── scripts/build-claude-skill-package.py  # Builds and checks downloadable Skill ZIP
+├── dist/                              # Generated downloadable package committed for release convenience
 └── .claude/checks/                    # Skillified verification checks
     ├── prompt-schema.py               # Asserts coaching diagnostic structural integrity
     └── scenario-fixtures.py           # Asserts test-scenarios.md is intact
@@ -50,7 +55,7 @@ mc-conductor/
 **Phase B complete (2026-05-15):**
 - Skills #1-6 (cadence skills) added as portable "bring your own sources" skills for C-suite and institutional leaders
 - Skills #10-11 (Leader-Pen, Leader-Edit) added as portable voice skills with voice elicitation, drafting, and editing discipline
-- Bundle-integrity check added to verify all 11 skills, YAML frontmatter, README coverage, unique positions, and absence of private runtime dependencies
+- Bundle-integrity check added to verify all 11 skills, YAML frontmatter, README coverage, unique positions, native Claude Skill package, and absence of private runtime dependencies
 
 **Phase C complete (2026-05-15):**
 - Added anonymized examples for cadence skills
@@ -68,9 +73,10 @@ Used by `/go` as the criteria for Phase 1 (self-test) and Phase 2 (cold-grader).
 
 **Always:**
 - [ ] All `skills/*/SKILL.md` files parse as valid Markdown with valid YAML frontmatter (`name:`, `description:`, `bundle: mc-conductor`).
-- [ ] Bundle integrity: `python3 .claude/checks/bundle-integrity.py --explain` (asserts all 11 skill files exist, positions are unique, README lists every skill, required public docs exist, each skill includes the Conductor Profile rule, and portable skills do not leak private runtime dependencies).
+- [ ] Native package current: `python3 scripts/build-claude-skill-package.py --check`.
+- [ ] Bundle integrity: `python3 .claude/checks/bundle-integrity.py --explain` (asserts all 11 skill files exist, positions are unique, README lists every skill, required public docs exist, each skill includes the Conductor Profile rule, native Claude Skill package is present, and portable skills do not leak private runtime dependencies).
 - [ ] No personal data, real client names, or real coaching-session content in committed files (run `python3 ~/.claude/checks/security/pr-personal-data-sweep.py --branch`).
-- [ ] `README.md` install instructions list all 11 skills accurately (no orphans, no phantoms) and link `QUICKSTART.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `docs/onboarding.md`, `docs/sample-conductor-profile.md`, `docs/skill-index.md`, and `docs/customization.md` as public entrypoints.
+- [ ] `README.md` install instructions list all 11 skills accurately (no orphans, no phantoms) and link `INSTALL.md`, `QUICKSTART.md`, `UPDATE.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `docs/onboarding.md`, `docs/sample-conductor-profile.md`, `docs/skill-index.md`, and `docs/customization.md` as public entrypoints.
 
 **If the change touches the Coaching Diagnostic (skill 8):**
 - [ ] Prompt structural integrity: `python3 .claude/checks/prompt-schema.py --explain` (asserts all 19 load-bearing elements still present in `skills/8-coaching-diagnostic/SKILL.md` — modes, Bass Line, forcing questions, hard rules, persona).
@@ -118,6 +124,6 @@ Used by `/go` as the criteria for Phase 1 (self-test) and Phase 2 (cold-grader).
 Currently **PRIVATE**. Will go public when Phase B ships (port the remaining 8 skills) and the bundle is ready for leader install. Before flipping to public:
 - [ ] Scrub all public files for personally identifying examples — anonymize to patterns such as "a head of school", "a charter network", or "a regional nonprofit".
 - [ ] Confirm MIT LICENSE file exists at root
-- [ ] Confirm `QUICKSTART.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `docs/onboarding.md`, `docs/sample-conductor-profile.md`, `docs/skill-index.md`, and `docs/customization.md` are linked from README and every skill can use the Conductor Profile
+- [ ] Confirm `INSTALL.md`, `QUICKSTART.md`, `UPDATE.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `docs/onboarding.md`, `docs/sample-conductor-profile.md`, `docs/skill-index.md`, and `docs/customization.md` are linked from README and every skill can use the Conductor Profile
 - [ ] Confirm `.github/workflows/checks.yml` runs bundle, schema, and scenario checks on PRs
 - [ ] Verify no internal infrastructure references leaked through: private retrieval tools, personal knowledge stores, local runtime config, background jobs, automation services, or identifying example fingerprints.

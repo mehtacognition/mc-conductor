@@ -87,6 +87,28 @@ def main() -> None:
             sys.exit(1)
         print("  ✓ private runtime references fail")
 
+
+    with tempfile.TemporaryDirectory() as tmp:
+        temp_root = Path(tmp) / "mc-conductor"
+        shutil.copytree(PROJECT_ROOT, temp_root, ignore=shutil.ignore_patterns(".git"))
+        (temp_root / "dist" / "mc-conductor-claude-skill.zip").unlink()
+        code, _out, err = run(temp_root)
+        if code != 1 or "downloadable native Claude Skill ZIP" not in err:
+            print(f"FAIL [missing native package -> fail]\n{err}", file=sys.stderr)
+            sys.exit(1)
+        print("  ✓ missing native package fails")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        temp_root = Path(tmp) / "mc-conductor"
+        shutil.copytree(PROJECT_ROOT, temp_root, ignore=shutil.ignore_patterns(".git"))
+        package_skill = temp_root / "dist" / "claude-skill" / "mc-conductor" / "SKILL.md"
+        package_skill.write_text(package_skill.read_text() + "\nStale local package copy.\n")
+        code, _out, err = run(temp_root)
+        if code != 1 or "built native Claude Skill source is stale" not in err:
+            print(f"FAIL [stale native package folder -> fail]\n{err}", file=sys.stderr)
+            sys.exit(1)
+        print("  ✓ stale native package folder fails")
+
     with tempfile.TemporaryDirectory() as tmp:
         temp_root = Path(tmp) / "mc-conductor"
         shutil.copytree(PROJECT_ROOT, temp_root, ignore=shutil.ignore_patterns(".git"))
