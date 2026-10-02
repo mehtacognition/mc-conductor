@@ -4,7 +4,7 @@ Publisher: Mehta Cognition LLC
 
 Effective date: October 2, 2026
 
-Conductor provides AI instructions and leadership workflows for use within ChatGPT or Codex. This notice covers the Conductor plugin, version 0.2.4.
+Conductor provides AI instructions and leadership workflows for use within ChatGPT or Codex. This notice covers the Conductor plugin, version 0.2.5.
 
 ## Information processed when you use Conductor
 
