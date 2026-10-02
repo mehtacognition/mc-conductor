@@ -4,7 +4,7 @@ Publisher: Mehta Cognition LLC
 
 Effective date: October 2, 2026
 
-Conductor provides AI instructions and leadership workflows for use within ChatGPT or Codex. This notice covers the Conductor plugin, version 0.2.3.
+Conductor provides AI instructions and leadership workflows for use within ChatGPT or Codex. This notice covers the Conductor plugin, version 0.2.4.
 
 ## Information processed when you use Conductor
 
@@ -18,7 +18,9 @@ If you use Conductor with connected apps or tools, information may be accessed, 
 
 ## Contacting us
 
-If you contact Mehta Cognition for support, we receive your contact details and whatever information you choose to share. Please avoid sending confidential student, personnel or client records. Questions about this notice or information you have shared with us can be directed to contact@mehtacognition.com. Requests concerning information held by OpenAI or another service should be directed to that provider.
+Messages to contact@mehtacognition.com are received by Nishant Mehta and Allen Broyles through Google Workspace. We receive your contact details and whatever information you choose to share, and use support messages only to respond to and resolve support inquiries. Please avoid sending confidential student, personnel or client records.
+
+We retain support messages for 12 months after resolution, then delete them unless the law requires longer retention. You may request deletion at contact@mehtacognition.com, subject to legal obligations. Questions about this notice or information you have shared with us can also be directed to that address. Requests concerning information held by OpenAI or another service should be directed to that provider.
 
 ## Updates
 
