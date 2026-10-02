@@ -124,6 +124,50 @@ def main() -> None:
             sys.exit(1)
         print("  ✓ public docs are privacy-scanned")
 
+    with tempfile.TemporaryDirectory() as tmp:
+        temp_root = Path(tmp) / "mc-conductor"
+        shutil.copytree(PROJECT_ROOT, temp_root, ignore=shutil.ignore_patterns(".git"))
+        policy = temp_root / "docs" / "conductor-privacy-notice.md"
+        original = policy.read_text()
+        approved = (
+            "Messages to contact@mehtacognition.com are received by "
+            + blocked_term("Nish", "ant")
+            + " Mehta and Allen Broyles through Google Workspace. "
+            "We receive your contact details and whatever information you choose to share, "
+            "and use support messages only to respond to and resolve support inquiries. "
+            "Please avoid sending confidential student, personnel or client records."
+        )
+        policy.write_text("# Privacy notice\n\n" + approved + "\n\n## Updates\n")
+        code, _out, err = run(temp_root)
+        if code != 0:
+            print(f"FAIL [exact approved support paragraph -> pass]\n{err}", file=sys.stderr)
+            sys.exit(1)
+        print("  ✓ exact approved support paragraph passes in policy file")
+
+        cases = (
+            ("altered disclosure", original.replace("only to respond", "also to respond", 1)),
+            ("extra personal name", original + "\n" + blocked_term("Nish", "ant") + "\n"),
+            ("other private name", original + "\n" + blocked_term("Jen", "nifer") + "\n"),
+            ("duplicate disclosure", original + "\n" + approved + "\n\n"),
+            ("private runtime reference", original + "\n" + blocked_term("~/.config/", "mc-os") + "\n"),
+            ("paragraph boundary changed", original.replace("\n\n" + approved, "\n" + approved, 1)),
+        )
+        for label, content in cases:
+            policy.write_text(content)
+            code, _out, err = run(temp_root)
+            if code != 1 or "private/personal reference" not in err or str(policy.relative_to(temp_root)) not in err:
+                print(f"FAIL [{label} -> privacy failure]\n{err}", file=sys.stderr)
+                sys.exit(1)
+            print(f"  ✓ {label} still fails")
+
+        policy.write_text(original)
+        (temp_root / "docs" / "unapproved-support-copy.md").write_text("# Copy\n\n" + approved + "\n\n")
+        code, _out, err = run(temp_root)
+        if code != 1 or "unapproved-support-copy.md" not in err:
+            print(f"FAIL [approved text in another file -> fail]\n{err}", file=sys.stderr)
+            sys.exit(1)
+        print("  ✓ approved text in another file remains blocked")
+
     print("\nAll tests passed.")
 
 

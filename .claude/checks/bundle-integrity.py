@@ -98,6 +98,17 @@ PRIVATE_EXAMPLE_PATTERNS = (
     blocked_term("A", "SB"),
     blocked_term("Green", "vale"),
 )
+# Publisher-approved public support disclosure, not a personal example.
+# Match one complete, exact paragraph in this file only; scan every other byte.
+APPROVED_SUPPORT_FILE = Path("docs/conductor-privacy-notice.md")
+APPROVED_SUPPORT_PARAGRAPH = (
+    "Messages to contact@mehtacognition.com are received by "
+    + blocked_term("Nish", "ant")
+    + " Mehta and Allen Broyles through Google Workspace. "
+    "We receive your contact details and whatever information you choose to share, "
+    "and use support messages only to respond to and resolve support inquiries. "
+    "Please avoid sending confidential student, personnel or client records."
+)
 PUBLIC_SURFACE_FILES = (
     Path("README.md"),
     Path("QUICKSTART.md"),
@@ -166,6 +177,8 @@ def scan_privacy_leaks(project_root: Path) -> list[str]:
     for path in collect_privacy_scan_paths(project_root):
         rel_path = path.relative_to(project_root)
         text = path.read_text(errors="ignore")
+        if rel_path == APPROVED_SUPPORT_FILE:
+            text = text.replace("\n\n" + APPROVED_SUPPORT_PARAGRAPH + "\n\n", "\n\n", 1)
         allowed = PRIVACY_SCAN_ALLOWLIST.get(rel_path, set())
         leaked = [
             pattern
